@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo-container">
+            <img src="https://lambertlenack.com/img/lambert-lenack.gif" alt="Logo" class="logo">
+        </a>
+    </header>
+    <nav>
+        <div class="menu-button" id="menu-button">
+            <div class="menu-button-line"></div>
+            <div class="menu-button-line"></div>
+        </div>
+        <ul class="dropdown-menu" id="dropdown-menu">
+            <li><a href="/Public/Categorie/urbanisme.html"><strong>Urbanisme</strong></a></li>
+            <li><a href="categories/logement.html"><strong>Logement</strong></a></li>
+            <li><a href="categories/bureaux.html"><strong>Bureaux</strong></a></li>
+            <li class="spacer"></li>
+            <li><a href="contact.html"><strong>Contact</strong></a></li>
+            <li><a href="https://www.instagram.com"><strong>Instagram</strong></a></li>
+            <li><a href="about.html"><strong>À Propos</strong></a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="contact-section">
+            <h1>Contactez-nous</h1>
+            <p>Nous serions ravis de répondre à toutes vos questions. Veuillez remplir le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</p>
+            <form action="#" method="post">
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message :</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

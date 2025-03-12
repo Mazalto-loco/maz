@@ -1,0 +1,274 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff; /* Couleur de fond blanche */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh; /* Assure que le corps prend toute la hauteur de la fenêtre */
+    overflow-y: auto;
+
+}
+
+header {
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    margin-left: 0px; /* Ajoute une marge à gauche */
+    background-color: transparent;
+}
+
+header .logo {
+    position: fixed; /* Position fixe par rapport à la fenêtre */
+    top: 10px; /* Positionner à 10 pixels du haut de la fenêtre */
+    left: 50%; /* Positionner à 50% de la largeur de la fenêtre */
+    width: 125px; /* Largeur de l'image */
+    height: 50px; /* Hauteur de l'image */
+    display: block;
+    object-fit: cover; /* Maintient les proportions de l'image */
+    transform: translateX(-50%); /* Centre l'image horizontalement */
+    z-index: 1000; /* Assure que le logo apparaît au-dessus des autres éléments */
+    background-color: transparent;
+}
+
+nav {
+    width: 200px;
+    background-color: #ffffff; /* Couleur de fond blanche pour uniformiser */
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    box-shadow: none; /* Supprime l'ombre */
+    border-right: none; /* Supprime la bordure droite */
+    transition: all 0.3s ease-in-out; /* Transition pour l'affichage et le masquage de la liste */
+}
+
+.menu-button {
+    width: 32px; /* Largeur de la croix */
+    height: 32px; /* Hauteur de la croix */
+    position: absolute; /* Place le bouton de manière absolue */
+    top: 5px; /* Décale de 8 pixels vers le haut */
+    right: 8px; /* Décale de 8 pixels vers la droite */
+    cursor: pointer;
+    background-color: #fff; /* Fond blanc */
+    transform: translate(-151px, 0); /* Décale de 200 pixels vers la gauche */
+}
+
+.menu-button::before,
+.menu-button::after {
+    content: '';
+    position: absolute;
+    width: 2px; /* Réduit l'épaisseur de la croix */
+    height: 50%; /* Raccourcit la hauteur des segments */
+    background-color: #424242; /* Couleur noire */
+    top: 25%; /* Centre verticalement les segments */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menu-button::after {
+    width: 50%; /* Raccourcit la largeur des segments */
+    height: 2px; /* Réduit l'épaisseur de la croix */
+    left: 25%; /* Centre horizontalement les segments */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.dropdown-menu {
+    list-style: none;
+    padding: 0;
+    margin: 100px 0 0 0; /* Ajoute beaucoup d'espacement en haut */
+    font-size: 0.875rem; /* Taille de police plus petite */
+    opacity: 0; /* Rendre la liste invisible par défaut */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Transition pour l'opacité et la visibilité */
+    visibility: hidden; /* Masquer la liste par défaut */
+    transform: translate(10px, 10px); /* Décale le menu déroulant vers le bas à droite */
+    pointer-events: none; /* Désactiver les événements de la souris pour la liste */
+}
+
+.dropdown-menu.visible {
+    opacity: 1; /* Rendre la liste visible */
+    visibility: visible; /* Rendre la liste visible */
+    pointer-events: auto; /* Activer les événements de la souris */
+}
+
+.dropdown-menu li *:not(.spacer) {
+    margin: -5px 0;
+}
+.dropdown-menu li{  
+    opacity: 0; /* Initialement invisible */
+    transform: translateY(-20px); /* Décale légèrement vers le haut pour l'effet de glissement */
+    animation: fadeInUp 0.5s forwards; /* Animation pour rendre visible */
+}
+
+.dropdown-menu.visible li:nth-child(1) { animation-delay: 0.2s; }
+.dropdown-menu.visible li:nth-child(2) { animation-delay: 0.4s; }
+.dropdown-menu.visible li:nth-child(3) { animation-delay: 0.6s; }
+.dropdown-menu.visible li:nth-child(4) { animation-delay: 0.8s; }
+.dropdown-menu.visible li:nth-child(5) { animation-delay: 1s; }
+.dropdown-menu.visible li:nth-child(6) { animation-delay: 1.2s; }
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px); /* Anime depuis une position légèrement à gauche */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0); /* Anime vers la position originale */
+    }
+}
+
+/* Autres styles existants... */
+
+.project {
+    opacity: 0; /* Initialement invisible */
+    transform: translateX(-20px); /* Décale légèrement vers la gauche pour l'effet de glissement */
+    animation: fadeInLeft 0.5s forwards; /* Animation pour rendre visible */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Anime depuis une position légèrement plus basse */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Anime vers la position originale */
+    }
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+    color: #222;
+    display: block;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #ddd;
+}
+
+.dropdown-menu .spacer {
+    height: 10px; /* Espacement entre les catégories et les autres liens */
+}
+
+/* Style pour la section principale et l'affichage des projets */
+main {
+    margin-left: 220px;
+    padding: 20px;
+    width: calc(100% - 240px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff; /* Couleur de fond blanche */
+    height: calc(100vh - 50px); /* Assure que la section principale prend toute la hauteur restante */
+    overflow: auto; /* Empêche le défilement dans la section principale */
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
+    gap: 150px;
+    row-gap: 50px;;
+    width: 100%;
+    max-width: 1200px; /* Ajuster selon la largeur souhaitée */
+    transform: translateX(-230px); /* Décale les projets vers la gauche de 150 pixels */
+}
+
+.project {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative; /* Pour positionner le texte par rapport à l'image */
+}
+
+.project a {
+    display: block;
+    position: relative;
+    text-decoration: none;
+}
+
+.project img {
+
+    width: 200%;
+    height: auto;
+    border-radius: 0; /* Enlève les bordures */
+    box-shadow: none; /* Enlève les ombres */
+    transition: transform 0.3s;
+}
+
+.project img:hover {
+    transform: scale(1.05);
+}
+
+.project-name {
+    position: absolute;
+    bottom: 10px; /* Positionner le texte sous l'image */
+    left: 70%;
+    transform: translateX(-10%);
+    color: #777; /* Couleur du texte gris */
+    font-size: 0.75rem; /* Taille de police plus petite */
+    padding: 5px 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+
+}
+
+.project:hover .project-name {
+    opacity: 1; /* Afficher le texte au survol */
+}
+
+/* Styles pour le pied de page */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.footer-text {
+    text-align: center;
+    flex: 1;
+    transform: translateX(-60px); /* Décale de 50 pixels vers la gauche */
+    margin-top: -50px; /* Décale cet élément vers le haut */
+    color: #333; /* Change la couleur du texte */
+    font-weight: bold;
+    font-size: 1.1rem; /* Réduit légèrement la taille de la police */
+}
+
+.counter {
+
+    text-align: right;
+    background-color: transparent;
+    flex: 0;
+    margin-left: auto;
+    margin-right: 0;
+    padding-right: 20px;
+    margin-top: -52px; /* Décale cet élément vers le haut */
+    color: #333; /* Change la couleur du texte */
+    font-weight: bold;
+    transform: translateX(200px); /* Décale de 50 pixels vers la droite */
+    font-size: 0.9rem; /* Réduit légèrement la taille de la police */
+
+ }

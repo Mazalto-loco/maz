@@ -1,0 +1,43 @@
+
+.diaporama {
+    position: relative;
+    max-width: 100%;
+    height: calc(100vh - 50px); /* Ajuster cette valeur pour prendre en compte la hauteur du logo */
+    margin: 0 auto; /* Centrer la diaporama */
+    margin-top: 40px; /* Ajouter une marge supérieure pour décaler la diaporama vers le bas */
+    overflow: hidden;
+    display: flex;
+    justify-content: center; /* Centrer les images horizontalement */
+    transform: translateX(-100px); /* Décale de 100 pixels vers la gauche */
+}
+
+.slide {
+    opacity: 0; /* Initialement invisible */
+    transform: translateY(-20px); /* Décale légèrement vers le haut pour l'effet de glissement */
+    animation: fadeInUp 0.5s forwards; /* Animation pour rendre visible */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Anime depuis une position légèrement plus basse */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Anime vers la position originale */
+    }
+}
+.active {
+    display: block;
+}
+
+.slide img {
+    width: 55%; /* Ajuster cette valeur pour redimensionner les images */
+    height: auto;
+    margin: auto; /* Centrer les images */
+    display: block; /* Pour s'assurer que les marges auto fonctionnent sur les images */
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
